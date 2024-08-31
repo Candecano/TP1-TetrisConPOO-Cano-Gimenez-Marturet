@@ -6,4 +6,5 @@ Paradigmas II
 
 Alumnas:
 Candela Josefina Cano Gimenez
+
 Carla Valentina Marturet Ojeda
