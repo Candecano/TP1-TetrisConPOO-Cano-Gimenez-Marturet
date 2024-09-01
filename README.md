@@ -1,10 +1,10 @@
-Tetris con Test Unitarios
+# Java API Service Starter
 
-Trabajo Práctico N1
+This is a minimal Java API service starter based on [Google Cloud Run Quickstart](https://cloud.google.com/run/docs/quickstarts/build-and-deploy/deploy-java-service).
 
-Paradigmas II
+## Getting Started
 
-Alumnas:
-Candela Josefina Cano Gimenez
-
-Carla Valentina Marturet Ojeda
+Server should run automatically when starting a workspace. To run manually, run:
+```sh
+mvn spring-boot:run
+```
