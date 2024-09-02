@@ -25,4 +25,33 @@ public class PieceStickTest {
                      assertEquals(1, pist.getPiezas(3, 0));
                      
                 }
+
+
+@Test
+
+void rotar_pieza_stick_a_la_derecha(){
+
+    int[][] piezas = {
+        {1},  
+        {1},
+        {1},
+        {1}
+   };
+   PieceStick pist = new PieceStick(piezas);
+   
+pist.rotarder();
+
+assertEquals(1, pist.getPiezas(0,0));
+assertEquals(1, pist.getPiezas(0,1));
+assertEquals(1, pist.getPiezas(0,2));
+assertEquals(1, pist.getPiezas(0,3));
+
+}
+
+
+
+
+
+
+
 }

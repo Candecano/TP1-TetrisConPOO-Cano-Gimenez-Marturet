@@ -17,9 +17,13 @@ public class Tetris implements IRotable {
     }
 
     @Override
-    public void rotarpieza() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'rotarpieza'");
+    public void rotarder() {
+       
+    }
+
+    @Override
+    public void rotarizq(){
+        
     }
 
 }
