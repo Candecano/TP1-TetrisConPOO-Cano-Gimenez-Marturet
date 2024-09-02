@@ -1,6 +1,6 @@
 package com.example.demo;
 
-public class Tetris {
+public class Tetris implements IRotable {
     public int[][] piezas;
     public Tetris(){
     }
@@ -14,6 +14,12 @@ public class Tetris {
     }
     public void setPiezas(int fila, int columna, int valor) {
         piezas[fila][columna] = valor;
+    }
+
+    @Override
+    public void rotarpieza() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'rotarpieza'");
     }
 
 }
