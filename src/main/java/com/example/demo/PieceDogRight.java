@@ -1,6 +1,6 @@
 package com.example.demo;
 
-public class PieceDogRight extends Tetris {
+public class PieceDogRight extends PieceBase {
     public PieceDogRight(int [][] piezas){
         super(piezas);
     }

@@ -39,17 +39,17 @@ public class PieceDogLeftTest {
 
      pidoglefT.rotarizq();
       assertEquals(1, pidoglefT.getPiezas(0, 1));
-      assertEquals(0, pidoglefT.getPiezas(0, 0));
-      assertEquals(1, pidoglefT.getPiezas(1, 0));
-      assertEquals(1, pidoglefT.getPiezas(1, 1));
+      assertEquals(0, pidoglefT.getPiezas(0, 0));             //{0, 1}
+      assertEquals(1, pidoglefT.getPiezas(1, 0));             //{1, 1}
+      assertEquals(1, pidoglefT.getPiezas(1, 1));             //{1, 0}
       assertEquals(1, pidoglefT.getPiezas(2, 0));
       assertEquals(0, pidoglefT.getPiezas(2, 1));
       
 //se vuelve a rotar la pieza a la izq y vuelve a su forma original
       pidoglefT.rotarizq();
       assertEquals(1, pidoglefT.getPiezas(0, 0));
-      assertEquals(1, pidoglefT.getPiezas(0, 1));
-      assertEquals(1, pidoglefT.getPiezas(1, 1));
+      assertEquals(1, pidoglefT.getPiezas(0, 1));            //{1,1,0}
+      assertEquals(1, pidoglefT.getPiezas(1, 1));            //{0,1,1}
       assertEquals(1, pidoglefT.getPiezas(1, 2));
 
 

@@ -44,18 +44,18 @@ void rotar_dogright_a_izq_y_dr(){
    //pieza perro mirando a la derecha rotada a la derecha
     pidogRight.rotarder();
       assertEquals(0, pidogRight.getPiezas(0, 1));
-      assertEquals(1, pidogRight.getPiezas(0, 0));
-      assertEquals(1, pidogRight.getPiezas(1, 0));
-      assertEquals(1, pidogRight.getPiezas(1, 1));
+      assertEquals(1, pidogRight.getPiezas(0, 0));             //{1, 0}
+      assertEquals(1, pidogRight.getPiezas(1, 0));             //{1, 1}
+      assertEquals(1, pidogRight.getPiezas(1, 1));             //{0, 1}
       assertEquals(0, pidogRight.getPiezas(2, 0));
       assertEquals(1, pidogRight.getPiezas(2, 1));
 
 
 //pieza rotada a la derecha, se rota a la derecha y vuelve a la pieza original
       pidogRight.rotarder();
-      assertEquals(1, pidogRight.getPiezas(0, 1));
-      assertEquals(1, pidogRight.getPiezas(0, 2));
-      assertEquals(1, pidogRight.getPiezas(1, 0));
+      assertEquals(1, pidogRight.getPiezas(0, 1));               //{0, 1, 1}
+      assertEquals(1, pidogRight.getPiezas(0, 2));               //{1, 1, 0}
+      assertEquals(1, pidogRight.getPiezas(1, 0));               
       assertEquals(1, pidogRight.getPiezas(1, 1));
 
 
