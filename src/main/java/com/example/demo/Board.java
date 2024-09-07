@@ -14,21 +14,42 @@ public class Board extends PieceBase{
     public void setTablero(int fila, int columna, int valor){
         tablero[fila][columna] = valor;
     }
-
     @Override
     public void ingreso() {
-       int columnasDisponibles = tablero[0].length - this.piezas.length;
-        int columnaInicial = (int) (Math.random() * columnasDisponibles);
-        // Colocar la pieza en la fila 0 y columna aleatoria
+        // Calcular una columna aleatoria válida dentro del rango de columnas del tablero
+        int columnaInicial = (int) (Math.random() * tablero[0].length);
+    
+        // Insertar la pieza verticalmente en la misma columna, comenzando desde la fila 0
         for (int i = 0; i < this.piezas.length; i++) {
-            if (columnaInicial + i < tablero[0].length) {
-                tablero[0][columnaInicial + i] = this.piezas[i][0]; 
-            }
+            tablero[i][columnaInicial] = this.piezas[i][0];  // Colocar cada bloque en una fila diferente en la misma columna
         }
     }
-
     
 
-    
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
 

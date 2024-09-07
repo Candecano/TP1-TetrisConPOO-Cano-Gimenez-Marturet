@@ -33,5 +33,63 @@ public class BoardTest {
             }
               
       }
-      
+
+
+@Test
+void ingreso_de_la_pieza_stick_al_tablero(){
+
+    int [][] tablero={
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    };
+    
+    Board  board1 = new Board (tablero);
+
+    int[][] piezas = {
+        {1},  
+        {1},
+        {1},
+        {1}
+   };
+   PieceStick pist = new PieceStick(piezas);
+
+board1.piezas= pist.piezas;
+board1.ingreso();
+
+int columnaConPieza = 0;
+    for (int col = 0; col < tablero[0].length; col++) {
+        if (tablero[0][col] == 1) {
+            columnaConPieza = col;
+            break;
+        }
+    }
+    
+    // Asegurarse de que la pieza esté en la misma columna a lo largo de las 4 filas
+    for (int fila = 0; fila < 4; fila++) {
+        assertEquals(1, tablero[fila][columnaConPieza]);  // Verificar que todas las filas tengan el valor 1 en la misma columna
+    }
 }
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+      
+
