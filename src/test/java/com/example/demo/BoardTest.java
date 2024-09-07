@@ -72,9 +72,9 @@ int columnaConPieza = 0;
         }
     }
     
-    // Asegurarse de que la pieza esté en la misma columna a lo largo de las 4 filas
+    // para asegurarse que los elementos de la figura están bien colocados en la misma columna pero dif filas
     for (int fila = 0; fila < 4; fila++) {
-        assertEquals(1, tablero[fila][columnaConPieza]);  // Verificar que todas las filas tengan el valor 1 en la misma columna
+        assertEquals(1, tablero[fila][columnaConPieza]);  
     }
 }
 
