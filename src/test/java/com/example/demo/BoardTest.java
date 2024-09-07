@@ -78,7 +78,44 @@ int columnaConPieza = 0;
     }
 }
 
+@Test
+    void insertar_pieza_rotada_en_tablero() {
+        int [][] tablero={
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+        };
+        
+        Board  board1 = new Board (tablero);
+        int[][] piezas = {
+            {1},  
+            {1},
+            {1},
+            {1}
+       };
 
+       PieceStick pist = new PieceStick(piezas);
+       pist.rotarder();
+   
+        board1.piezas = pist.piezas;
+        board1.ingresopiezarotada();
+
+        
+        int bloquesInsertados = 0;
+        for (int j = 0; j < tablero[0].length; j++) {
+            if (tablero[0][j] == 1) {
+                bloquesInsertados++;
+            }
+        }
+        assertEquals(4, bloquesInsertados); // Verificar que se insertaron 4 bloques
+    }
 
 
 }

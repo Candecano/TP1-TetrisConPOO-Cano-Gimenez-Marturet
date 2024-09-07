@@ -30,4 +30,9 @@ public class PieceBase implements IRotable, IIngresa {
     public void ingreso(){
         
     }
+
+    @Override
+    public void ingresopiezarotada(){
+        
+    }
 }
