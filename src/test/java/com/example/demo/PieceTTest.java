@@ -13,7 +13,7 @@ public class PieceTTest {
                 int[][] piezas = {
                      {1, 1, 1},             
                      {0, 1, 0},
-                     {0, 0, 0}
+               
                 };
                 PieceT pit = new PieceT(piezas);
                 
