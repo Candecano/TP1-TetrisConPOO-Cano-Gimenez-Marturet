@@ -13,7 +13,9 @@ void Se_crea_las_piezas_L_right() {
                 {1, 0, 0}
              
        };
-       PieceLL pil = new PieceLL(piezas);
+       
+        PieceLR pil = new PieceLR(piezas);
+
        
        assertEquals(1, pil.getPiezas(0, 0));
        assertEquals(1, pil.getPiezas(0, 1));

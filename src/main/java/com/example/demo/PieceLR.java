@@ -6,8 +6,9 @@ public class PieceLR extends PieceBase {
         super(piezas);
     }
 
+   
     @Override
-    public void rotarder(){
+    public void rotarizq(){
         int filas = piezas.length;
         int columnas = piezas[0].length;
 
