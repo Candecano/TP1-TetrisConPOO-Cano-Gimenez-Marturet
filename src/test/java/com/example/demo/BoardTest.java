@@ -62,7 +62,7 @@ void ingreso_de_la_pieza_stick_al_tablero(){
    PieceStick pist = new PieceStick(piezas);
 
 board1.piezas= pist.piezas;
-board1.ingreso();
+board1.ingresoPieza();
 
 int columnaConPieza = 0;
     for (int col = 0; col < tablero[0].length; col++) {
@@ -105,7 +105,7 @@ int columnaConPieza = 0;
        pist.rotarder();
    
         board1.piezas = pist.piezas;
-        board1.ingresopiezarotada();
+        board1.ingresoPieza();
 
         
         int bloquesInsertados = 0;
@@ -113,11 +113,10 @@ int columnaConPieza = 0;
             if (tablero[0][j] == 1) {
                 bloquesInsertados++;
             }
-        }
-        assertEquals(4, bloquesInsertados); // Verificar que se insertaron 4 bloques
+        }        assertEquals(4, bloquesInsertados); //para verificar que se insertaron los 4 bloques
     }
 
-    @Test
+     @Test
     void ingreso_de_la_pieza_square_al_tablero(){
         int [][] tablero={
             {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -141,30 +140,25 @@ int columnaConPieza = 0;
         PieceSquare pSquare = new PieceSquare(piezas);
 
           board1.piezas= pSquare.piezas;
-             board1.ingreso();
-//para ver que columna tiene la pieza
-        int columnaConPieza = 0;
-        for (int col = 0; col < tablero[0].length; col++) {
-             if (tablero[0][col] == 1) {
-                 columnaConPieza = col;
-                 break;
-        }
-    }
+             board1.ingresoPieza();
+   
     
-    // para asegurarse que los elementos de la figura están bien colocados en la misma columna pero dif filas
-         for (int fila = 0; fila < 2; fila++) {
-            assertEquals(2, tablero[fila][columnaConPieza]);  
-    }
+   
 
+    // para verificar se han insertado 4 bloques
     int bloquesInsertados = 0;
-    for (int j = 0; j < tablero[0].length; j++) {
-        if (tablero[0][j] == 1) {
-            bloquesInsertados++;
+    for (int fila = 0; fila < tablero.length; fila++) {
+        for (int col = 0; col < tablero[fila].length; col++) {
+            if (tablero[fila][col] == 1) {
+                bloquesInsertados++;
+            }
         }
     }
-    assertEquals(1, bloquesInsertados); // Verificar que se insertaron 4 bloques
-}
 
+    
+    assertEquals(4, bloquesInsertados);
+}
+     
 
 
     @Test
@@ -190,40 +184,27 @@ int columnaConPieza = 0;
        };
        PieceT pit = new PieceT(piezas);
 
-
-
-        
-           board1.piezas= pit.piezas;
-             board1.ingreso();
+        board1.piezas= pit.piezas;
+        board1.ingresoPieza();
 
         int columnaConPieza = 0;
         for (int col = 0; col < tablero[0].length; col++) {
-             if (tablero[0][col] == 1) {
+             if (tablero[0][col] == 1 &&  tablero[0][col + 1] == 1 && tablero[0][col + 2] == 1) {
                  columnaConPieza = col;
                  break;
         }
     }
     
-    // para asegurarse que los elementos de la figura están bien colocados
-           int desplazamiento= 1;
-           int columnadesplazada = columnaConPieza + desplazamiento;
-
-            assertEquals(1, tablero[0][columnaConPieza]);
-                      
-            assertEquals(0,tablero[1][columnaConPieza]);
-            
-            assertEquals();
-
     
-    }
+            // primera fila (1 1 1  )
+    assertEquals(1, tablero[0][columnaConPieza]);
+    assertEquals(1, tablero[0][columnaConPieza + 1]);
+    assertEquals(1, tablero[0][columnaConPieza + 2]);
 
-
-
-
-
-
-
-
+    //  segunda fila (0 1 0)
+    assertEquals(0, tablero[1][columnaConPieza]);
+    assertEquals(1, tablero[1][columnaConPieza + 1]);
+    assertEquals(0, tablero[1][columnaConPieza + 2]);
 
 
 
@@ -231,6 +212,350 @@ int columnaConPieza = 0;
 
 
 }
+            
+
+    
+
+@Test
+
+void ingreso_pieza_t_rotada(){
+    int [][] tablero = {
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    };
+
+
+    Board board1 = new Board(tablero);
+
+    
+    int[][] piezas = {
+        {1, 1, 1},             
+        {0, 1, 0},
+    };
+
+   
+    PieceT pit = new PieceT(piezas);
+
+  
+    pit.rotarder();
+
+ 
+    board1.piezas = pit.piezas;
+    board1.ingresoPieza();
+    int bloquesInsertados = 0;
+    for (int fila = 0; fila < tablero.length; fila++) {
+        for (int col = 0; col < tablero[fila].length; col++) {
+            if (tablero[fila][col] == 1) {
+                bloquesInsertados++;
+            }
+        }
+    }
+
+    
+    assertEquals(4, bloquesInsertados);
+
+ 
+}
+
+
+@Test
+void ingreso_de_la_pieza_DOGL_al_tablero(){
+    int [][] tablero={
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    };
+         Board  board1 = new Board (tablero);
+
+             int[][] piezas = {
+                   {1,1,0},
+                   {0,1,1}
+        
+            };
+        PieceDogLeft pidoglefT = new PieceDogLeft(piezas);
+
+            
+            
+        board1.piezas= pidoglefT.piezas;
+        board1.ingresoPieza();
+          
+    int bloquesInsertados = 0;
+    for (int fila = 0; fila < tablero.length; fila++) {
+        for (int col = 0; col < tablero[fila].length; col++) {
+            if (tablero[fila][col] == 1) {
+                bloquesInsertados++;
+            }
+        }
+    }
+
+    assertEquals(4, bloquesInsertados);
+
+}
+
+
+
+@Test
+void ingreso_de_la_pieza_DOGL_rotada_al_tablero(){
+    int [][] tablero={
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    };
+         Board  board1 = new Board (tablero);
+
+             int[][] piezas = {
+                   {1,1,0},
+                   {0,1,1}
+        
+            };
+        PieceDogLeft pidoglefT = new PieceDogLeft(piezas);
+        pidoglefT.rotarizq();
+
+        board1.piezas= pidoglefT.piezas;
+        board1.ingresoPieza();
+    
+    int bloquesInsertados = 0;
+    for (int fila = 0; fila < tablero.length; fila++) {
+        for (int col = 0; col < tablero[fila].length; col++) {
+            if (tablero[fila][col] == 1) {
+                bloquesInsertados++;
+            }
+        }
+    }
+
+
+    assertEquals(4, bloquesInsertados);
+
+    
+
+}
+
+@Test
+void ingresa_pieza_dog_right_a_tablero(){
+
+    int [][] tablero={
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    };
+    Board  board1 = new Board (tablero);
+
+
+    int[][] piezas = {
+        {0,1,1},
+        {1,1,0}
+        
+   };
+   PieceDogRight pidogRight = new PieceDogRight(piezas);
+
+   board1.piezas= pidogRight.piezas;
+   board1.ingresoPieza();
+
+   int bloquesInsertados = 0;
+   for (int fila = 0; fila < tablero.length; fila++) {
+       for (int col = 0; col < tablero[fila].length; col++) {
+           if (tablero[fila][col] == 1) {
+               bloquesInsertados++;
+           }
+       }
+   }
+
+   
+   assertEquals(4, bloquesInsertados);
+
+
+
+}
+
+@Test
+void ingresa_pieza_L_right_a_tablero(){
+
+    int [][] tablero={
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    };
+    Board  board1 = new Board (tablero);
+
+   
+     //ROSAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        int[][] piezas = {    
+                {1, 1, 1},
+                {1, 0, 0}
+             
+       };
+       PieceLR pil = new PieceLR(piezas);
+       board1.piezas= pil.piezas;
+       board1.ingresoPieza();
+
+    int bloquesInsertados = 0;
+   for (int fila = 0; fila < tablero.length; fila++) {
+       for (int col = 0; col < tablero[fila].length; col++) {
+           if (tablero[fila][col] == 1) {
+               bloquesInsertados++;
+           }
+       }
+   }
+
+   assertEquals(4, bloquesInsertados);
+
+
+}
+
+@Test
+void ingresa_pieza_L_rotada_right_a_tablero(){
+
+int [][] tablero={
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    };
+    Board  board1 = new Board (tablero);
+
+     //ROSAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        int[][] piezas = {    
+                {1, 1, 1},
+                {1, 0, 0}
+             
+       };
+       PieceLR pil = new PieceLR(piezas);
+
+        pil.rotarizq();
+       board1.piezas= pil.piezas;
+       board1.ingresoPieza();
+    int bloquesInsertados = 0;
+   for (int fila = 0; fila < tablero.length; fila++) {
+       for (int col = 0; col < tablero[fila].length; col++) {
+           if (tablero[fila][col] == 1) {
+               bloquesInsertados++;
+           }
+       }
+   }
+
+   assertEquals(4, bloquesInsertados);
+
+}
+
+
+@Test
+void ingreso_L_left_al_tablero(){
+
+    int [][] tablero={
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    };
+    Board  board1 = new Board (tablero);
+    int[][] piezas = {    
+        {1, 1, 1},
+        {0, 0, 1}
+     
+};
+PieceLL pil = new PieceLL(piezas);
+
+        board1.piezas= pil.piezas;
+        board1.ingresoPieza();
+
+        int bloquesInsertados = 0;
+        for (int fila = 0; fila < tablero.length; fila++) {
+            for (int col = 0; col < tablero[fila].length; col++) {
+                 if (tablero[fila][col] == 1) {
+        bloquesInsertados++;
+                    }
+
+                }
+         }
+
+    assertEquals(4, bloquesInsertados);
+    
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

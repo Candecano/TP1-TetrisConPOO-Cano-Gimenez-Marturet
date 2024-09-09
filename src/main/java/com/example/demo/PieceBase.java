@@ -1,6 +1,6 @@
 package com.example.demo;
 
-public class PieceBase implements IRotable, IIngresa {
+public class PieceBase implements IRotable {
     public int[][] piezas;
     public PieceBase(){
     }
@@ -26,13 +26,12 @@ public class PieceBase implements IRotable, IIngresa {
         
     }
 
-    @Override
-    public void ingreso(){
-        
-    }
+    
 
-    @Override
-    public void ingresopiezarotada(){
-        
-    }
+  
+
+
+
+
+
 }

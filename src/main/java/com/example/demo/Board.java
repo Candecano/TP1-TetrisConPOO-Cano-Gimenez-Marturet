@@ -3,6 +3,7 @@ package com.example.demo;
 public class Board extends PieceBase{
 
     public int [][]	 tablero;
+    public int ingresoPieza; 
 
     public Board(int[][] tablero) {
         this.tablero = tablero;
@@ -15,31 +16,26 @@ public class Board extends PieceBase{
         tablero[fila][columna] = valor;
     }
 
-    /*ingreso de la pieza stick sin rotar*/
-    @Override
-    public void ingreso() {
-        //columna aleatoria dentro de las 20 columnas del tablero
-        int columnaInicial = (int) (Math.random() * tablero[0].length);
-    
-        // se inserta la pieza desde la fila 0
-        for (int i = 0; i < this.piezas.length; i++) {
-            //se coloca el resto de elementos de la pieza, debajo del primer elemento
-            tablero[i][columnaInicial] = this.piezas[i][0]; 
-        }
-    }
+   
 
-    /*ingreso de la pieza stick rotada*/
-    @Override
-    public void ingresopiezarotada() {
+    public void ingresoPieza() {
+        //cantidad de columnas disponibles en el tablero, resta de cant de columnas del tablero
+        //menos cant de columnas de la pieza
         int columnasDisponibles = tablero[0].length - this.piezas[0].length;
-        int columnaInicial = (int) (Math.random() * (columnasDisponibles + 1));  
-        // pieza en la fila 0 y la columna calculada
-        for (int i = 0; i < this.piezas[0].length; i++) {
-            tablero[0][columnaInicial + i] = this.piezas[0][i];  
+    
+        // Columna del tablero en donde irá la pieza teniendo en cuenta las restricciones de la resta
+        int columnaInicial = (int) (Math.random() * (columnasDisponibles + 1));
+    
+
+        for (int fila = 0; fila < this.piezas.length; fila++) {
+            for (int col = 0; col < this.piezas[0].length; col++) {
+                // se inserta la pieza en el tablero
+                if (this.piezas[fila][col] != 0) {  // se insertan los 1 de la pieza
+                    tablero[fila][columnaInicial + col] = this.piezas[fila][col];
+                }
+            }
         }
     }
-
-    
 
 
 

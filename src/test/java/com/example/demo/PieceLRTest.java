@@ -32,7 +32,7 @@ void rota_pieza_L_der_izq() {
                 {1, 0, 0}
              
        };
-       PieceLL pil = new PieceLL(piezas);
+       PieceLR pil = new PieceLR(piezas);
        
        assertEquals(1, pil.getPiezas(0, 0));
        assertEquals(1, pil.getPiezas(0, 1));               //{1, 1, 1},
