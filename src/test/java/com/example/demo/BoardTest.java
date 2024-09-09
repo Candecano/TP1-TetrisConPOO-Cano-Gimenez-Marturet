@@ -509,7 +509,7 @@ PieceLL pil = new PieceLL(piezas);
         int bloquesInsertados = 0;
         for (int fila = 0; fila < tablero.length; fila++) {
             for (int col = 0; col < tablero[fila].length; col++) {
-                 if (tablero[fila][col] == 1) {
+                     if (tablero[fila][col] == 1) {
         bloquesInsertados++;
                     }
 
@@ -517,53 +517,26 @@ PieceLL pil = new PieceLL(piezas);
          }
 
     assertEquals(4, bloquesInsertados);
-    
+    }
+
+
+//test reloj
+
+@Test
+
+void comprueba_tic_x_segundo(){
+    Clock c1 = new Clock();
+
+c1.Tick();
+
+assertEquals(1, c1.getTick());
+
 }
 
 
 
+
+
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-
