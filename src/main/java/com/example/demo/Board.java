@@ -38,6 +38,8 @@ public class Board extends PieceBase{
     }
 
 
+//piezas aleatorias para ingresar al tablero
+
 
 
 
