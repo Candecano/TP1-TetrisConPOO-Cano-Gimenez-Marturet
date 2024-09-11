@@ -5,6 +5,11 @@ public class Board extends PieceBase{
     public int [][]	 tablero;
     public int ingresoPieza; 
 
+     // Columna inicial
+      // Fila para manejar la posición de la pieza
+     int columnaInicial;
+ 
+
     public Board(int[][] tablero) {
         this.tablero = tablero;
     }
@@ -24,7 +29,7 @@ public class Board extends PieceBase{
         int columnasDisponibles = tablero[0].length - this.piezas[0].length;
     
         // Columna del tablero en donde irá la pieza teniendo en cuenta las restricciones de la resta
-        int columnaInicial = (int) (Math.random() * (columnasDisponibles + 1));
+         columnaInicial = (int) (Math.random() * (columnasDisponibles + 1));
     
 
         for (int fila = 0; fila < this.piezas.length; fila++) {
@@ -38,34 +43,36 @@ public class Board extends PieceBase{
     }
 
 
-//piezas aleatorias para ingresar al tablero
 
 
+//bajar pieza
 
+public void bajarPieza() {
+   int fila = 0; 
+    if (fila + this.piezas.length >= tablero.length) {
+        return; 
+    }
 
+  
+    for (int f = 0; f < this.piezas.length; f++) {
+        for (int col = 0; col < this.piezas[0].length; col++) {
+            if (this.tablero[fila + f][columnaInicial + col] == 1) {
+                this.tablero[fila + f][columnaInicial + col] = 0;
+            }
+        }
+    }
 
-
-
-
-
-
-
-
-
-
+    fila++; 
+   
+    for (int f = 0; f < this.piezas.length; f++) {
+        for (int col = 0; col < this.piezas[0].length; col++) {
+            if (this.piezas[f][col] == 1) {
+                tablero[fila + f][columnaInicial + col] = 1;
+            }
+        }
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 

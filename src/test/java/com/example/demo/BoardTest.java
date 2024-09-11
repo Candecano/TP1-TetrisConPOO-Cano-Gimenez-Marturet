@@ -544,59 +544,19 @@ void se_ingresa_una_pieza_aleatoria_en_tablero(){
     int[][] piezaSeleccionada = piezanueva.PiezaAleatoria(piezanueva.PiezaRandom);
     board1.piezas = piezaSeleccionada;
     board1.ingresoPieza();
+    board1.bajarPieza();
+    board1.bajarPieza();
+   
+    for (int i = 0; i < tablero.length; i++) {
+     for (int j = 0; j < tablero[i].length; j++) {
+         System.out.print(tablero[i][j] + " ");
+     }
+     System.out.println();
+     }   
     
 
-
-
-
-
-
-
-    
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //test reloj
 
 @Test
@@ -605,15 +565,57 @@ void comprueba_tic_x_segundo(){
     Clock c1 = new Clock();
 
 c1.Tick();
-
 assertEquals(1, c1.getTick());
 
 }
 
+@Test
+void se_ingresa_una_pieza_en_tablero_y_baja(){
+    int[][] tablero = new int[10][20];
+    Board  board1 = new Board (tablero);
+
+    int[][] piezas = {
+        {1},  
+        {1},
+        {1},
+        {1}
+   };
+
+   PieceStick pist = new PieceStick(piezas);
+
+   board1.piezas= pist.piezas;
+   board1.ingresoPieza();
+   board1.bajarPieza();
+   for (int col = 0; col < tablero[0].length; col++) {
+    assertEquals(0, tablero[0][col]);
+   
+
+}
+}
+
+@Test
+void se_ingresa_una_pieza_en_tablero_y_baja_L(){
+    int[][] tablero = new int[10][20];
+    Board  board1 = new Board (tablero);
+
+    int[][] piezas = {    
+        {1, 1, 1},
+        {1, 0, 0}
+     
+};
+PieceLR pil = new PieceLR(piezas);
 
 
 
 
+   board1.piezas= pil.piezas;
+   board1.ingresoPieza();
+   board1.bajarPieza();
+   
+  for (int col = 0; col < tablero[0].length; col++) {
+    assertEquals(0, tablero[0][col]);
 
+}
+}
 
 }
