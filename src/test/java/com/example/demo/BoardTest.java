@@ -546,16 +546,12 @@ void se_ingresa_una_pieza_aleatoria_en_tablero(){
     board1.ingresoPieza();
     board1.bajarPieza();
     board1.bajarPieza();
-   
-    for (int i = 0; i < tablero.length; i++) {
-     for (int j = 0; j < tablero[i].length; j++) {
-         System.out.print(tablero[i][j] + " ");
-     }
-     System.out.println();
-     }   
-    
+    for (int col = 0; col < tablero[0].length; col++) {
+        assertEquals(0, tablero[0][col]);
+  
 
 
+}
 }
 //test reloj
 
@@ -571,7 +567,18 @@ assertEquals(1, c1.getTick());
 
 @Test
 void se_ingresa_una_pieza_en_tablero_y_baja(){
-    int[][] tablero = new int[10][20];
+    int [][] tablero={
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    };
     Board  board1 = new Board (tablero);
 
     int[][] piezas = {
@@ -586,36 +593,88 @@ void se_ingresa_una_pieza_en_tablero_y_baja(){
    board1.piezas= pist.piezas;
    board1.ingresoPieza();
    board1.bajarPieza();
+  
+   
    for (int col = 0; col < tablero[0].length; col++) {
     assertEquals(0, tablero[0][col]);
+    
    
+}
+}
+  
+@Test
+void se_ingresa_una_pieza_aleatoria_en_tablero_y_baja(){
+    int [][] tablero={
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    };
+    Board  board1 = new Board (tablero);
 
+    PieceBase piezanueva = new PieceBase();
+
+    int[][] piezaSeleccionada = piezanueva.PiezaAleatoria(piezanueva.PiezaRandom);
+    board1.piezas = piezaSeleccionada;
+    board1.ingresoPieza();
+    board1.bajarPieza();
+    
+   
+    
+   for (int col = 0; col < tablero[0].length; col++) {
+    assertEquals(0, tablero[0][col]);
 }
 }
 
 @Test
-void se_ingresa_una_pieza_en_tablero_y_baja_L(){
-    int[][] tablero = new int[10][20];
+void se_ingresa_una_pieza_aleatoria_en_tablero_y_baja_por_segundo(){
+    int [][] tablero={
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    };
     Board  board1 = new Board (tablero);
 
-    int[][] piezas = {    
-        {1, 1, 1},
-        {1, 0, 0}
-     
-};
-PieceLR pil = new PieceLR(piezas);
+    PieceBase piezanueva = new PieceBase();
+
+    int[][] piezaSeleccionada = piezanueva.PiezaAleatoria(piezanueva.PiezaRandom);
+    board1.piezas = piezaSeleccionada;
+    board1.ingresoPieza();
+
+    Clock c1 = new Clock();
+
+    c1.Tick();
+    assertEquals(1, c1.getTick());
+    
+    if (c1.getTick() == 1) {
+        board1.bajarPieza();
+    }
 
 
-
-
-   board1.piezas= pil.piezas;
-   board1.ingresoPieza();
-   board1.bajarPieza();
-   
-  for (int col = 0; col < tablero[0].length; col++) {
-    assertEquals(0, tablero[0][col]);
-
+    c1.Tick();
+    assertEquals(2, c1.getTick());
+    if (c1.getTick() == 2) {
+        board1.bajarPieza();
+    }
+    for (int col = 0; col < tablero[0].length; col++) {
+        assertEquals(0, tablero[0][col]);
+        assertEquals(0, tablero[1][col]);
+       
+    }
+    
+       
 }
-}
-
 }

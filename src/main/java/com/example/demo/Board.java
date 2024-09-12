@@ -4,6 +4,7 @@ public class Board extends PieceBase{
 
     public int [][]	 tablero;
     public int ingresoPieza; 
+    int filaInicial = 0; 
 
      // Columna inicial
       // Fila para manejar la posición de la pieza
@@ -48,29 +49,32 @@ public class Board extends PieceBase{
 //bajar pieza
 
 public void bajarPieza() {
-   int fila = 0; 
-    if (fila + this.piezas.length >= tablero.length) {
-        return; 
-    }
 
-  
-    for (int f = 0; f < this.piezas.length; f++) {
-        for (int col = 0; col < this.piezas[0].length; col++) {
-            if (this.tablero[fila + f][columnaInicial + col] == 1) {
-                this.tablero[fila + f][columnaInicial + col] = 0;
+    if (filaInicial + piezas.length < tablero.length) {
+        // Usamos un solo bucle para eliminar la pieza anterior y moverla hacia abajo
+        for (int fila = 0; fila < this.piezas.length; fila++) {
+            for (int col = 0; col < this.piezas[0].length; col++) {
+                if (this.piezas[fila][col] != 0) {
+                    
+                    // Eliminar la pieza de la posición actual
+                    tablero[filaInicial + fila][columnaInicial + col] = 0;
+                }
             }
         }
-    }
+        filaInicial++;  // Mover la pieza hacia abajo
 
-    fila++; 
-   
-    for (int f = 0; f < this.piezas.length; f++) {
-        for (int col = 0; col < this.piezas[0].length; col++) {
-            if (this.piezas[f][col] == 1) {
-                tablero[fila + f][columnaInicial + col] = 1;
-            }
-        }
+        for (int fila = 0; fila < this.piezas.length; fila++) {
+            for (int col = 0; col < this.piezas[0].length; col++) {
+                if (this.piezas[fila][col] != 0) {
+                    if (tablero[filaInicial + fila][columnaInicial + col] >= 0 && tablero[filaInicial + fila][columnaInicial + col] < tablero.length && tablero[filaInicial + fila][columnaInicial + col] < tablero[0].length  ) {
+                        tablero[filaInicial + fila][columnaInicial + col] = piezas[fila][col];
+                    }
+                }
     }
+}
+
+}
+
 }
 }
 
