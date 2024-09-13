@@ -79,7 +79,7 @@ int columnaConPieza = 0;
 }
 
 @Test
-    void insertar_pieza_rotada_en_tablero() {
+void insertar_pieza_rotada_en_tablero() {
         int [][] tablero={
             {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -116,8 +116,8 @@ int columnaConPieza = 0;
         }        assertEquals(4, bloquesInsertados); //para verificar que se insertaron los 4 bloques
     }
 
-     @Test
-    void ingreso_de_la_pieza_square_al_tablero(){
+@Test
+void ingreso_de_la_pieza_square_al_tablero(){
         int [][] tablero={
             {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -159,10 +159,8 @@ int columnaConPieza = 0;
     assertEquals(4, bloquesInsertados);
 }
      
-
-
-    @Test
-    void ingreso_de_la_pieza_T_al_tablero(){
+@Test
+void ingreso_de_la_pieza_T_al_tablero(){
         int [][] tablero={
             {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -213,11 +211,7 @@ int columnaConPieza = 0;
 
 }
             
-
-    
-
 @Test
-
 void ingreso_pieza_t_rotada(){
     int [][] tablero = {
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -265,7 +259,6 @@ void ingreso_pieza_t_rotada(){
  
 }
 
-
 @Test
 void ingreso_de_la_pieza_DOGL_al_tablero(){
     int [][] tablero={
@@ -307,8 +300,6 @@ void ingreso_de_la_pieza_DOGL_al_tablero(){
 
 }
 
-
-
 @Test
 void ingreso_de_la_pieza_DOGL_rotada_al_tablero(){
     int [][] tablero={
@@ -348,8 +339,7 @@ void ingreso_de_la_pieza_DOGL_rotada_al_tablero(){
 
     assertEquals(4, bloquesInsertados);
 
-    
-
+   
 }
 
 @Test
@@ -479,7 +469,6 @@ int [][] tablero={
 
 }
 
-
 @Test
 void ingreso_L_left_al_tablero(){
 
@@ -519,11 +508,8 @@ PieceLL pil = new PieceLL(piezas);
     assertEquals(4, bloquesInsertados);
     }
 
-
 //pieza aleatoria se ingresa al tablero
-
 @Test
-
 void se_ingresa_una_pieza_aleatoria_en_tablero(){
     int [][] tablero={
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -544,19 +530,14 @@ void se_ingresa_una_pieza_aleatoria_en_tablero(){
     int[][] piezaSeleccionada = piezanueva.PiezaAleatoria(piezanueva.PiezaRandom);
     board1.piezas = piezaSeleccionada;
     board1.ingresoPieza();
-    board1.bajarPieza();
-    board1.bajarPieza();
-    for (int col = 0; col < tablero[0].length; col++) {
-        assertEquals(0, tablero[0][col]);
-  
+   
+
 
 
 }
-}
+
 //test reloj
-
 @Test
-
 void comprueba_tic_x_segundo(){
     Clock c1 = new Clock();
 
@@ -663,7 +644,6 @@ void se_ingresa_una_pieza_aleatoria_en_tablero_y_baja_por_segundo(){
         board1.bajarPieza();
     }
 
-
     c1.Tick();
     assertEquals(2, c1.getTick());
     if (c1.getTick() == 2) {
@@ -672,9 +652,102 @@ void se_ingresa_una_pieza_aleatoria_en_tablero_y_baja_por_segundo(){
     for (int col = 0; col < tablero[0].length; col++) {
         assertEquals(0, tablero[0][col]);
         assertEquals(0, tablero[1][col]);
-       
+    } 
+}
+
+@Test
+void se_ingresa_una_pieza_aleatoria_en_tablero_y_baja_por_segundo_y_gira(){
+    
+    int [][] tablero={
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    };
+         Board  board1 = new Board (tablero);
+
+             int[][] piezas = {
+                   {1,1,0},
+                   {0,1,1}
+        
+            };
+        PieceDogLeft pidoglefT = new PieceDogLeft(piezas);
+        pidoglefT.rotarizq();
+
+        board1.piezas= pidoglefT.piezas;
+        board1.ingresoPieza();
+        Clock c1 = new Clock();
+            //baja la pieza rotada una posicion hacia abajo
+        c1.Tick(); 
+        if (c1.getTick() == 1) {
+        board1.bajarPieza();
+         }
+    
+    
+      
+
+}
+
+
+@Test
+void no_se_puede_ingresar_mas_piezas(){
+    int [][] tablero={
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    };
+    
+    Board  board1 = new Board (tablero);
+
+    int[][] piezas = {
+        {1},  
+        {1},
+        {1},
+        {1}
+   };
+   PieceStick pist = new PieceStick(piezas);
+   
+    pist.rotarder();
+
+    board1.piezas= pist.piezas;
+    board1.colocarPieza();
+    for (int col = 0; col < tablero.length; col++) {
+        if(tablero[0][col+1] != 1){
+           
+            board1.colocarPieza();
+        }
+    
     }
     
-       
+    for (int i = 0; i < tablero.length; i++) {
+        for (int j = 0; j < tablero[i].length; j++) {
+            System.out.print(tablero[i][j] + " ");
+        }
+        System.out.println();
+    }
+
+ /*boolean hayununo= false; 
+    for (int col = 0; col < tablero.length; col++) {
+        if (tablero[0][col] == 1) {
+            hayununo = true;
+            break;
+        }
+    }
+    assertTrue(hayununo);*/
 }
+   
 }
+

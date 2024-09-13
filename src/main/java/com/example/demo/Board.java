@@ -4,7 +4,9 @@ public class Board extends PieceBase{
 
     public int [][]	 tablero;
     public int ingresoPieza; 
+
     int filaInicial = 0; 
+
 
      // Columna inicial
       // Fila para manejar la posición de la pieza
@@ -43,9 +45,23 @@ public class Board extends PieceBase{
         }
     }
 
+    public void colocarPieza(){
 
+        columnaInicial = 0;
+        
 
-
+        for (int fila = 0; fila < this.piezas.length; fila++) {
+            for (int col = 0; col < this.piezas[0].length; col++) {
+                // se inserta la pieza en el tablero
+                if (this.piezas[fila][col] != 0) {  // se insertan los 1 de la pieza
+                    tablero[fila][columnaInicial + col] = this.piezas[fila][col];
+                }
+            }
+        }
+            
+        }
+        
+    
 //bajar pieza
 
 public void bajarPieza() {
@@ -62,7 +78,8 @@ public void bajarPieza() {
             }
         }
         filaInicial++;  // Mover la pieza hacia abajo
-
+        
+        //Colocamos la pieza en la posicion siguiente
         for (int fila = 0; fila < this.piezas.length; fila++) {
             for (int col = 0; col < this.piezas[0].length; col++) {
                 if (this.piezas[fila][col] != 0) {
@@ -76,6 +93,8 @@ public void bajarPieza() {
 }
 
 }
+
+  
 }
 
 
