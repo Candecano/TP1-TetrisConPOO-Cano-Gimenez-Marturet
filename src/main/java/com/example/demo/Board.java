@@ -4,6 +4,7 @@ public class Board extends PieceBase{
 
     public int [][]	 tablero;
     public int ingresoPieza; 
+    public int  columnasDisponibles; 
 
     int filaInicial = 0; 
 
@@ -29,7 +30,7 @@ public class Board extends PieceBase{
     public void ingresoPieza() {
         //cantidad de columnas disponibles en el tablero, resta de cant de columnas del tablero
         //menos cant de columnas de la pieza
-        int columnasDisponibles = tablero[0].length - this.piezas[0].length;
+        columnasDisponibles = tablero[0].length - this.piezas[0].length;
     
         // Columna del tablero en donde irá la pieza teniendo en cuenta las restricciones de la resta
          columnaInicial = (int) (Math.random() * (columnasDisponibles + 1));
@@ -47,19 +48,54 @@ public class Board extends PieceBase{
 
     public void colocarPieza(){
 
+        int espacioLibre = 0;
         columnaInicial = 0;
         
-
+        for (int col = 0; col < tablero[0].length; col++) {
+            boolean columnaVacia = true;
+            
+         
+            for (int fila = 0; fila < tablero.length; fila++) {
+                if (tablero[fila][col] != 0) {
+                    columnaVacia = false;
+                    break;
+                }
+            }
+            
+            if (columnaVacia) {
+                espacioLibre++;
+            } else {
+                espacioLibre = 0;  
+            }
+    
+            if (espacioLibre >= this.piezas[0].length) {
+                columnaInicial = col - espacioLibre + 1;
+                break;
+            }
+        }
+        
         for (int fila = 0; fila < this.piezas.length; fila++) {
             for (int col = 0; col < this.piezas[0].length; col++) {
-                // se inserta la pieza en el tablero
-                if (this.piezas[fila][col] != 0) {  // se insertan los 1 de la pieza
+                if (this.piezas[fila][col] != 0) {
                     tablero[fila][columnaInicial + col] = this.piezas[fila][col];
                 }
             }
         }
             
+}
+
+public void eliminarFila() {
+    
+    for (int fila = 0; fila < this.tablero.length; fila++) {
+        for (int col = 0; col < this.tablero[0].length; col++) {
+            if (this.tablero[fila][col] == 1) {
+                tablero[fila][col] = 0;
+            }
         }
+    }
+}
+
+            
         
     
 //bajar pieza
@@ -96,6 +132,7 @@ public void bajarPieza() {
 
   
 }
+
 
 
 

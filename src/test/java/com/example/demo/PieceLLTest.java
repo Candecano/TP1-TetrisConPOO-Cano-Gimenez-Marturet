@@ -12,16 +12,17 @@ class PieceLLTest {
 
      //AMARILLO
              int[][] piezas = {    
-                  {1, 1, 1},
-                  {0, 0, 1}
+                  {0,1},
+                  {0,1},
+                  {1,1}
                
          };
          PieceLL pil = new PieceLL(piezas);
          
-         assertEquals(1, pil.getPiezas(0, 0));
          assertEquals(1, pil.getPiezas(0, 1));
-         assertEquals(1, pil.getPiezas(0, 2));
-         assertEquals(1, pil.getPiezas(1, 2));
+         assertEquals(1, pil.getPiezas(1, 1));
+         assertEquals(1, pil.getPiezas(2, 1));
+         assertEquals(1, pil.getPiezas(2, 0));
           
            
         
@@ -29,28 +30,37 @@ class PieceLLTest {
         }
 
         @Test
-  void rotacion_de_la_pieza_L_left_izq() {
+  void rotacion_de_la_pieza_L_left_izq_y_der() {
              int[][] piezas = {    
-                  {1, 1, 1},
-                  {0, 0, 1}
+                {0,1},
+                {0,1},
+                {1,1}
                
          };
          PieceLL pil = new PieceLL(piezas);
-         
-         assertEquals(1, pil.getPiezas(0, 0));
+
          assertEquals(1, pil.getPiezas(0, 1));
+         assertEquals(1, pil.getPiezas(1, 1));
+         assertEquals(1, pil.getPiezas(2, 1));
+         assertEquals(1, pil.getPiezas(2, 0));
+
+         pil.rotarizq();
+         
+         assertEquals(1, pil.getPiezas(0, 0));//(1,1,1)
+         assertEquals(1, pil.getPiezas(0, 1));//(0,0,1)
          assertEquals(1, pil.getPiezas(0, 2));
          assertEquals(1, pil.getPiezas(1, 2));
           
-         pil.rotarizq();
+        pil.rotarder();
          assertEquals(0, pil.getPiezas(0, 0));
          assertEquals(1, pil.getPiezas(0, 1));
          assertEquals(0, pil.getPiezas(1, 0));           //{0, 1}
          assertEquals(1, pil.getPiezas(1, 1));           //{0, 1}
          assertEquals(1, pil.getPiezas(2, 1));           //{1, 1}
          assertEquals(1, pil.getPiezas(2, 0));
-           
-         pil.rotarizq();
+         
+
+         pil.rotarder();
          assertEquals(1, pil.getPiezas(0, 0));
          assertEquals(0, pil.getPiezas(0, 1));           //{1, 0, 0}
          assertEquals(0, pil.getPiezas(0, 2));           //{1, 1, 1}
@@ -58,13 +68,15 @@ class PieceLLTest {
          assertEquals(1, pil.getPiezas(1, 1));
          assertEquals(1, pil.getPiezas(1, 2));
 
-         pil.rotarizq();
+         pil.rotarder();
          assertEquals(1, pil.getPiezas(0, 0));
          assertEquals(1, pil.getPiezas(0, 1));
          assertEquals(1, pil.getPiezas(1, 0));            //{1, 1}
          assertEquals(0, pil.getPiezas(1, 1));            //{1, 0}
          assertEquals(1, pil.getPiezas(2, 0));            //{1, 0}
          assertEquals(0, pil.getPiezas(2, 1));
+
+         
         }
 
         

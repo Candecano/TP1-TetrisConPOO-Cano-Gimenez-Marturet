@@ -74,5 +74,28 @@ public class PieceTTest {
 
                 }
 
+//rotacion a la izquierda
+@Test
+void rotacion_t_izquierda(){
+     int[][] piezas = {
+          {1, 1, 1},             
+          {0, 1, 0},
+     };
+     PieceT pit = new PieceT(piezas);
+     
+     assertEquals(1, pit.getPiezas(0, 0));
+     assertEquals(1, pit.getPiezas(0, 1));
+     assertEquals(1, pit.getPiezas(0, 2));
+     assertEquals(1, pit.getPiezas(1, 1));
+
+     //rotacion izq
+     pit.rotarizq();                                                     
+     assertEquals(1, pit.getPiezas(0, 0));   //(1,0)
+     assertEquals(1, pit.getPiezas(1, 0));   //(1,1)
+     assertEquals(1, pit.getPiezas(1, 1));   //(1,0)
+     assertEquals(1, pit.getPiezas(2, 0));   
+
+}
+
                 
 }

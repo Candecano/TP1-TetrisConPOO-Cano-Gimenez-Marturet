@@ -5,6 +5,7 @@ public class PieceBase implements IRotable {
     public int[][] piezas;
     Random random = new Random();
     int PiezaRandom = random.nextInt(7);
+    int RotacionRandom= random.nextInt(2);
     
     public PieceBase() {
      
@@ -95,7 +96,19 @@ public int [][] PiezaAleatoria (int PiezaRandom){
     default:
     return new int[0][0]; 
   }
- 
+
 }
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

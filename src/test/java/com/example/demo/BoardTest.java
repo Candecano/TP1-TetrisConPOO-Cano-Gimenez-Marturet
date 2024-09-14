@@ -724,29 +724,67 @@ void no_se_puede_ingresar_mas_piezas(){
 
     board1.piezas= pist.piezas;
     board1.colocarPieza();
-    for (int col = 0; col < tablero.length; col++) {
-        if(tablero[0][col+1] != 1){
-           
-            board1.colocarPieza();
-        }
+    board1.colocarPieza();
+    board1.colocarPieza();
+    board1.colocarPieza();
+    board1.colocarPieza();
+   
     
+    for (int col = 0; col < tablero[0].length; col++) {
+        assertEquals(1, board1.getTablero(0, col));
     }
-    
-    for (int i = 0; i < tablero.length; i++) {
-        for (int j = 0; j < tablero[i].length; j++) {
-            System.out.print(tablero[i][j] + " ");
-        }
-        System.out.println();
+   
+
+ 
+}
+   
+
+@Test
+void si_se_llena_de_1_la_primera_fial_desaparece(){
+
+    int [][] tablero={
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    };
+    Board  board1 = new Board (tablero);
+
+    int[][] piezas = {
+        {1},  
+        {1},
+        {1},
+        {1}
+   };
+   PieceStick pist = new PieceStick(piezas);
+   
+    pist.rotarder();
+
+    board1.piezas= pist.piezas;
+    board1.colocarPieza();
+    board1.colocarPieza();
+    board1.colocarPieza();
+    board1.colocarPieza();
+    board1.colocarPieza();
+
+    for (int col = 0; col < tablero[0].length; col++) {
+        assertEquals(1, board1.getTablero(0, col));
     }
 
- /*boolean hayununo= false; 
-    for (int col = 0; col < tablero.length; col++) {
-        if (tablero[0][col] == 1) {
-            hayununo = true;
-            break;
-        }
+   
+    board1.eliminarFila();
+    
+    for (int col = 0; col < tablero[0].length; col++) {
+        assertEquals(0, board1.getTablero(0, col));
     }
-    assertTrue(hayununo);*/
+
+    
 }
    
 }

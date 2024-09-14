@@ -56,6 +56,33 @@ public class PieceDogLeftTest {
   }
 
 
+  //se rota a la derecha(queda la misma figura)
+@Test
+
+void rotacion_a_derecha(){
+  int[][] piezas = {
+    {1,1,0},
+    {0,1,1}
+    
+};
+    PieceDogLeft pidoglefT = new PieceDogLeft(piezas);
+    
+    assertEquals(1, pidoglefT.getPiezas(0, 0));
+    assertEquals(1, pidoglefT.getPiezas(0, 1));
+    assertEquals(1, pidoglefT.getPiezas(1, 1));
+    assertEquals(1, pidoglefT.getPiezas(1, 2));
+
+    //se rota la pieza perro izq a la derecha
+
+   pidoglefT.rotarder();
+    assertEquals(1, pidoglefT.getPiezas(0, 1));
+    assertEquals(0, pidoglefT.getPiezas(0, 0));             //{0, 1}
+    assertEquals(1, pidoglefT.getPiezas(1, 0));             //{1, 1}
+    assertEquals(1, pidoglefT.getPiezas(1, 1));             //{1, 0}
+    assertEquals(1, pidoglefT.getPiezas(2, 0));
+    assertEquals(0, pidoglefT.getPiezas(2, 1));
+}
+
 
 
 

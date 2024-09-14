@@ -27,7 +27,7 @@ public class PieceDogRightTest {
 
         @Test
 
-void rotar_dogright_a_izq_y_dr(){
+void rotar_dogright_a_dr(){
     int[][] piezas = {
         {0,1,1},
         {1,1,0}
@@ -58,13 +58,42 @@ void rotar_dogright_a_izq_y_dr(){
       assertEquals(1, pidogRight.getPiezas(1, 0));               
       assertEquals(1, pidogRight.getPiezas(1, 1));
 
+}
+@Test
+void rotar_dogr_a_derecha(){
+    int[][] piezas = {
+        {0,1,1},
+        {1,1,0}
 
-//lo mismo sucede rotando la pieza original a la derecha
+   };
+   PieceDogRight pidogRight = new PieceDogRight(piezas);
+
+    assertEquals(1, pidogRight.getPiezas(0, 1));
+    assertEquals(1, pidogRight.getPiezas(0, 2));
+    assertEquals(1, pidogRight.getPiezas(1, 0));
+    assertEquals(1, pidogRight.getPiezas(1, 1));
 
 
-
+   //pieza perro mirando a la derecha rotada a la izquierda
+    pidogRight.rotarizq();
+      assertEquals(0, pidogRight.getPiezas(0, 1));
+      assertEquals(1, pidogRight.getPiezas(0, 0));             //{1, 0}
+      assertEquals(1, pidogRight.getPiezas(1, 0));             //{1, 1}
+      assertEquals(1, pidogRight.getPiezas(1, 1));             //{0, 1}
+      assertEquals(0, pidogRight.getPiezas(2, 0));
+      assertEquals(1, pidogRight.getPiezas(2, 1));
 
 }
+
+
+
+
+
+
+
+
+
+
 
 
 }
