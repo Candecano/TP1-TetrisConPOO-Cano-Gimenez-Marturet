@@ -2,6 +2,7 @@ package com.example.demo;
 import java.util.*;
 
 public class PieceBase implements IRotable {
+   
     public int[][] piezas;
     Random random = new Random();
     int PiezaRandom = random.nextInt(7);
@@ -54,20 +55,23 @@ public int [][] PiezaAleatoria (int PiezaRandom){
       };
 
      case 2:
-     //L left
+     //L izquierda
      return new int [][]{
-        {1, 1, 1},
-        {0, 0, 1}
+        {0,1},
+        {0,1},
+        {1,1}
      
      };
 
 
      case 3:
 
-     //L right
+     //L derecha
      return new int [][]{
-        {1, 1, 1},
-        {1, 0, 0}
+        {1,0},
+        {1,0},
+        {1,1}
+     
      };
 
     case 4:
@@ -99,16 +103,46 @@ public int [][] PiezaAleatoria (int PiezaRandom){
 
 }
 
+//rotacion aleatoria
+public int[][] RotacionAleatoria(int piezaRandom, int rotacionRandom) {
+    int[][] pieza = PiezaAleatoria(piezaRandom); 
 
+    switch (rotacionRandom) {
+        case 0:
+          
+            int filasIzq = pieza.length;
+            int columnasIzq = pieza[0].length;
+            int[][] rotadaIzq = new int[columnasIzq][filasIzq];
 
+            for (int i = 0; i < filasIzq; i++) {
+                for (int j = 0; j < columnasIzq; j++) {
+                    rotadaIzq[columnasIzq - 1 - j][i] = pieza[i][j]; 
+                }
+            }
+            pieza = rotadaIzq;
+            break;
 
+        case 1:
+          
+            int filasDer = pieza.length;
+            int columnasDer = pieza[0].length;
+            int[][] rotadaDer = new int[columnasDer][filasDer];
 
+            for (int i = 0; i < filasDer; i++) {
+                for (int j = 0; j < columnasDer; j++) {
+                    rotadaDer[j][filasDer - 1 - i] = pieza[i][j]; 
+                }
+            }
+            pieza = rotadaDer;
+            break;
 
+        default:
+            // Si no hay rotación, devolver la pieza sin cambios
+            break;
+    }
 
-
-
-
-
+    return pieza;
+}
 
 
 }

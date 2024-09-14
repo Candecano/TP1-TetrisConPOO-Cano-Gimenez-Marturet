@@ -84,6 +84,28 @@ public class Board extends PieceBase{
             
 }
 
+public void bajarFILA() {
+
+    for (int fila = filaInicial + this.piezas.length - 1; fila >= filaInicial; fila--) {
+        if (fila + 1 < tablero.length) { 
+            for (int col = 0; col < tablero[0].length; col++) {
+                tablero[fila + 1][col] = tablero[fila][col]; 
+                tablero[fila][col] = 0; 
+            }
+        }
+    }
+    
+    filaInicial++; 
+    for (int fila = 0; fila < this.piezas.length; fila++) {
+        for (int col = 0; col < this.piezas[0].length; col++) {
+            if (this.piezas[fila][col] != 0) {
+                tablero[filaInicial + fila][columnaInicial + col] = piezas[fila][col];
+            }
+        }
+    }
+}
+
+
 public void eliminarFila() {
     
     for (int fila = 0; fila < this.tablero.length; fila++) {

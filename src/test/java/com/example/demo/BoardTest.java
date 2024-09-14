@@ -406,9 +406,9 @@ void ingresa_pieza_L_right_a_tablero(){
    
      //ROSAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         int[][] piezas = {    
-                {1, 1, 1},
-                {1, 0, 0}
-             
+            {1,0},
+            {1,0},
+            {1,1}
        };
        PieceLR pil = new PieceLR(piezas);
        board1.piezas= pil.piezas;
@@ -447,8 +447,9 @@ int [][] tablero={
 
      //ROSAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         int[][] piezas = {    
-                {1, 1, 1},
-                {1, 0, 0}
+            {1,0},
+            {1,0},
+            {1,1}
              
        };
        PieceLR pil = new PieceLR(piezas);
@@ -486,8 +487,9 @@ void ingreso_L_left_al_tablero(){
     };
     Board  board1 = new Board (tablero);
     int[][] piezas = {    
-        {1, 1, 1},
-        {0, 0, 1}
+        {0,1},
+        {0,1},
+        {1,1}
      
 };
 PieceLL pil = new PieceLL(piezas);
@@ -756,17 +758,13 @@ void si_se_llena_de_1_la_primera_fial_desaparece(){
     };
     Board  board1 = new Board (tablero);
 
-    int[][] piezas = {
-        {1},  
-        {1},
-        {1},
-        {1}
-   };
-   PieceStick pist = new PieceStick(piezas);
-   
-    pist.rotarder();
-
-    board1.piezas= pist.piezas;
+    int[][] piezas = {    
+                {1, 1} ,
+                {1, 1} 
+        };
+        
+    PieceSquare pSquare = new PieceSquare(piezas);
+    board1.piezas= pSquare.piezas;
     board1.colocarPieza();
     board1.colocarPieza();
     board1.colocarPieza();
@@ -785,6 +783,83 @@ void si_se_llena_de_1_la_primera_fial_desaparece(){
     }
 
     
+}
+
+@Test
+void se_llena_2_lineas(){
+
+    int [][] tablero={
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    };
+    Board  board1 = new Board (tablero);
+
+    int[][] piezas = {    
+        {1, 1} ,
+        {1, 1} 
+};
+
+PieceSquare pSquare = new PieceSquare(piezas);
+
+    board1.piezas= pSquare.piezas;
+    for(int col=0; col <tablero.length; col++){
+        board1.colocarPieza();
+    }
+    
+    for (int col = 0; col < tablero[0].length; col++) {
+        assertEquals(1, board1.getTablero(0, col));
+        assertEquals(1, board1.getTablero(1, col));
+    }
+}
+
+@Test
+void se_baja_toda_una_linea(){
+
+    int [][] tablero={
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    };
+    Board  board1 = new Board (tablero);
+
+    int[][] piezas = {    
+        {1, 1} ,
+        {1, 1} 
+    };
+
+    PieceSquare pSquare = new PieceSquare(piezas);
+
+    board1.piezas= pSquare.piezas;
+    for(int col=0; col <tablero.length; col++){
+        board1.colocarPieza();
+    }
+     Clock c1 = new Clock();
+
+    while (board1.filaInicial + board1.piezas.length < tablero.length) {
+        c1.Tick();  // Avanza el tick
+        board1.bajarFILA();  // Baja la pieza
+    }
+
+   
+    for (int col = 0; col < tablero[0].length; col++) {
+        assertEquals(0, board1.getTablero(6, col));
+        assertEquals(0, board1.getTablero(7, col));
+    }
 }
    
 }
