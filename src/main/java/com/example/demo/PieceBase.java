@@ -137,7 +137,7 @@ public int[][] RotacionAleatoria(int piezaRandom, int rotacionRandom) {
             break;
 
         default:
-            // Si no hay rotación, devolver la pieza sin cambios
+         
             break;
     }
 

@@ -861,6 +861,51 @@ void se_baja_toda_una_linea(){
         assertEquals(0, board1.getTablero(7, col));
     }
 }
+
+@Test 
+void ingresa_pieza_aleatoria_con_rot_aleatoria(){
+    int [][] tablero={
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    };
+    Board  board1 = new Board (tablero);
+    PieceBase piezanueva = new PieceBase();
+
+     int piezaRandom = piezanueva.PiezaRandom;
+    int rotacionRandom = piezanueva.RotacionRandom;
+    int[][] piezaRotada = piezanueva.RotacionAleatoria(piezaRandom, rotacionRandom);
+
+    board1.piezas = piezaRotada;
+    board1.ingresoPieza();
+   
+
+   
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
    
 }
 
