@@ -151,10 +151,23 @@ public void bajarPieza() {
 }
 
 }
+public int lineCount() {
+    int contadorLineas = 0;
 
-  
+    // Iterar sobre cada fila del tablero
+    for (int fila = 0; fila < tablero.length; fila++) {
+        for (int col = 0; col < tablero[0].length; col++) {
+            if (tablero[fila][col] == 1) {
+                contadorLineas++;  
+                break;  
+            }
+        }
+    }
+
+    return contadorLineas;  
+
 }
-
+}
 
 
 

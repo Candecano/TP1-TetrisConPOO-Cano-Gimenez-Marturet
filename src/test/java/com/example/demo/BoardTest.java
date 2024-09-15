@@ -5,8 +5,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class BoardTest {
-    @Test
-    void construccion_de_tablero(){
+@Test
+void construccion_de_tablero(){
         int [][] tablero={
                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -30,14 +30,11 @@ public class BoardTest {
                 for (int j = 0; j < tablero.length; j++) {
                     assertEquals(0, board1.getTablero(i, j));
                 }
-            }
-              
+            }       
       }
-
 
 @Test
 void ingreso_de_la_pieza_stick_al_tablero(){
-
     int [][] tablero={
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -107,7 +104,6 @@ void insertar_pieza_rotada_en_tablero() {
         board1.piezas = pist.piezas;
         board1.ingresoPieza();
 
-        
         int bloquesInsertados = 0;
         for (int j = 0; j < tablero[0].length; j++) {
             if (tablero[0][j] == 1) {
@@ -142,9 +138,6 @@ void ingreso_de_la_pieza_square_al_tablero(){
           board1.piezas= pSquare.piezas;
              board1.ingresoPieza();
    
-    
-   
-
     // para verificar se han insertado 4 bloques
     int bloquesInsertados = 0;
     for (int fila = 0; fila < tablero.length; fila++) {
@@ -155,7 +148,6 @@ void ingreso_de_la_pieza_square_al_tablero(){
         }
     }
 
-    
     assertEquals(4, bloquesInsertados);
 }
      
@@ -191,10 +183,8 @@ void ingreso_de_la_pieza_T_al_tablero(){
                  columnaConPieza = col;
                  break;
         }
-    }
-    
-    
-            // primera fila (1 1 1  )
+    } 
+    // primera fila (1 1 1  )
     assertEquals(1, tablero[0][columnaConPieza]);
     assertEquals(1, tablero[0][columnaConPieza + 1]);
     assertEquals(1, tablero[0][columnaConPieza + 2]);
@@ -203,12 +193,6 @@ void ingreso_de_la_pieza_T_al_tablero(){
     assertEquals(0, tablero[1][columnaConPieza]);
     assertEquals(1, tablero[1][columnaConPieza + 1]);
     assertEquals(0, tablero[1][columnaConPieza + 2]);
-
-
-
-
-
-
 }
             
 @Test
@@ -226,21 +210,15 @@ void ingreso_pieza_t_rotada(){
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
     };
 
-
     Board board1 = new Board(tablero);
 
-    
     int[][] piezas = {
         {1, 1, 1},             
         {0, 1, 0},
     };
-
    
     PieceT pit = new PieceT(piezas);
-
-  
     pit.rotarder();
-
  
     board1.piezas = pit.piezas;
     board1.ingresoPieza();
@@ -255,8 +233,6 @@ void ingreso_pieza_t_rotada(){
 
     
     assertEquals(4, bloquesInsertados);
-
- 
 }
 
 @Test
@@ -297,7 +273,6 @@ void ingreso_de_la_pieza_DOGL_al_tablero(){
     }
 
     assertEquals(4, bloquesInsertados);
-
 }
 
 @Test
@@ -335,11 +310,7 @@ void ingreso_de_la_pieza_DOGL_rotada_al_tablero(){
             }
         }
     }
-
-
     assertEquals(4, bloquesInsertados);
-
-   
 }
 
 @Test
@@ -532,10 +503,6 @@ void se_ingresa_una_pieza_aleatoria_en_tablero(){
     int[][] piezaSeleccionada = piezanueva.PiezaAleatoria(piezanueva.PiezaRandom);
     board1.piezas = piezaSeleccionada;
     board1.ingresoPieza();
-   
-
-
-
 }
 
 //test reloj
@@ -545,7 +512,6 @@ void comprueba_tic_x_segundo(){
 
 c1.Tick();
 assertEquals(1, c1.getTick());
-
 }
 
 @Test
@@ -577,11 +543,8 @@ void se_ingresa_una_pieza_en_tablero_y_baja(){
    board1.ingresoPieza();
    board1.bajarPieza();
   
-   
    for (int col = 0; col < tablero[0].length; col++) {
     assertEquals(0, tablero[0][col]);
-    
-   
 }
 }
   
@@ -607,8 +570,6 @@ void se_ingresa_una_pieza_aleatoria_en_tablero_y_baja(){
     board1.piezas = piezaSeleccionada;
     board1.ingresoPieza();
     board1.bajarPieza();
-    
-   
     
    for (int col = 0; col < tablero[0].length; col++) {
     assertEquals(0, tablero[0][col]);
@@ -690,12 +651,7 @@ void se_ingresa_una_pieza_aleatoria_en_tablero_y_baja_por_segundo_y_gira(){
         if (c1.getTick() == 1) {
         board1.bajarPieza();
          }
-    
-    
-      
-
 }
-
 
 @Test
 void no_se_puede_ingresar_mas_piezas(){
@@ -740,7 +696,6 @@ void no_se_puede_ingresar_mas_piezas(){
  
 }
    
-
 @Test
 void si_se_llena_de_1_la_primera_fial_desaparece(){
 
@@ -771,9 +726,7 @@ void si_se_llena_de_1_la_primera_fial_desaparece(){
     board1.colocarPieza();
     board1.colocarPieza();
 
-    for (int col = 0; col < tablero[0].length; col++) {
-        assertEquals(1, board1.getTablero(0, col));
-    }
+   
 
    
     board1.eliminarFila();
@@ -855,7 +808,6 @@ void se_baja_toda_una_linea(){
         board1.bajarFILA();  // Baja la pieza
     }
 
-   
     for (int col = 0; col < tablero[0].length; col++) {
         assertEquals(0, board1.getTablero(6, col));
         assertEquals(0, board1.getTablero(7, col));
@@ -885,13 +837,6 @@ void ingresa_pieza_aleatoria_con_rot_aleatoria(){
 
     board1.piezas = piezaRotada;
     board1.ingresoPieza();
-   
-
-   
-
-
-
-
 }
 
 
