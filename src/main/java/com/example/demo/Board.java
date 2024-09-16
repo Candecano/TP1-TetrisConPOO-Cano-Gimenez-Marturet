@@ -21,9 +21,7 @@ public class Board extends PieceBase{
      public int getTablero(int fila, int columna){
         return tablero[fila][columna];
     }
-    public void setTablero(int fila, int columna, int valor){
-        tablero[fila][columna] = valor;
-    }
+   
 
    
 
@@ -79,13 +77,19 @@ public class Board extends PieceBase{
                 if (this.piezas[fila][col] != 0) {
                     tablero[fila][columnaInicial + col] = this.piezas[fila][col];
                 }
+                else {
+                   
+                    tablero[fila][columnaInicial + col] = 0;
+                }
+
+
+
             }
         }
             
 }
 
 public void bajarFILA() {
-
     for (int fila = filaInicial + this.piezas.length - 1; fila >= filaInicial; fila--) {
         if (fila + 1 < tablero.length) { 
             for (int col = 0; col < tablero[0].length; col++) {
@@ -100,7 +104,15 @@ public void bajarFILA() {
         for (int col = 0; col < this.piezas[0].length; col++) {
             if (this.piezas[fila][col] != 0) {
                 tablero[filaInicial + fila][columnaInicial + col] = piezas[fila][col];
+            }else {
+                
+                tablero[filaInicial + fila][columnaInicial + col] = 0; // Deja el valor como cero
             }
+            
+
+
+
+
         }
     }
 }
@@ -129,9 +141,10 @@ public void bajarPieza() {
         for (int fila = 0; fila < this.piezas.length; fila++) {
             for (int col = 0; col < this.piezas[0].length; col++) {
                 if (this.piezas[fila][col] != 0) {
-                    
                     // Eliminar la pieza de la posición actual
                     tablero[filaInicial + fila][columnaInicial + col] = 0;
+                }else {
+                    tablero[filaInicial + fila][columnaInicial + col] = tablero[filaInicial + fila][columnaInicial + col];
                 }
             }
         }

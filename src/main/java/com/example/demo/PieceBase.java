@@ -20,9 +20,7 @@ public class PieceBase implements IRotable {
     public int getPiezas(int fila, int columna) {
         return piezas[fila][columna];
     }
-    public void setPiezas(int fila, int columna, int valor) {
-        piezas[fila][columna] = valor;
-    }
+    
 
     @Override
     public void rotarder() {

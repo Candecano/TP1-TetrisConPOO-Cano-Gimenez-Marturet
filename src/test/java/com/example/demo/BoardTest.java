@@ -194,7 +194,7 @@ void ingreso_de_la_pieza_T_al_tablero(){
     assertEquals(1, tablero[1][columnaConPieza + 1]);
     assertEquals(0, tablero[1][columnaConPieza + 2]);
 }
-            
+          
 @Test
 void ingreso_pieza_t_rotada(){
     int [][] tablero = {
@@ -619,7 +619,7 @@ void se_ingresa_una_pieza_aleatoria_en_tablero_y_baja_por_segundo(){
 }
 
 @Test
-void se_ingresa_una_pieza_aleatoria_en_tablero_y_baja_por_segundo_y_gira(){
+void se_ingresa_una_perroizq_en_tablero_y_baja_por_segundo_y_gira(){
     
     int [][] tablero={
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -837,6 +837,95 @@ void ingresa_pieza_aleatoria_con_rot_aleatoria(){
 
     board1.piezas = piezaRotada;
     board1.ingresoPieza();
+}
+//para mejorar cobertura
+@Test
+void se_prueba_case0_rotacion_pieza_aleatoria_izq(){
+    int [][] tablero={
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    };
+    Board  board1 = new Board (tablero);
+
+    PieceBase piezanueva = new PieceBase();
+
+    int piezaRandom = piezanueva.PiezaRandom;
+    int rotacionRandom = 0; //case
+    int[][] piezaRotada = piezanueva.RotacionAleatoria(piezaRandom, rotacionRandom);
+
+    board1.piezas = piezaRotada;
+    board1.ingresoPieza();
+
+//contar si hay 1 en tablero
+//si hay cuatro 1 quiere decir que se ingreso una pieza
+
+int bloquesInsertados = 0;
+for (int fila = 0; fila < tablero.length; fila++) {
+    for (int col = 0; col < tablero[fila].length; col++) {
+        if (tablero[fila][col] == 1) {
+            bloquesInsertados++;
+        }
+    }
+}
+
+
+assertEquals(4, bloquesInsertados);
+
+
+
+
+}
+
+@Test
+
+void se_prueba_case1_rotacion_pieza_aleatoria_(){
+    int [][] tablero={
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    };
+    Board  board1 = new Board (tablero);
+
+    PieceBase piezanueva = new PieceBase();
+
+    int piezaRandom = piezanueva.PiezaRandom;
+    int rotacionRandom = 1; //case
+    int[][] piezaRotada = piezanueva.RotacionAleatoria(piezaRandom, rotacionRandom);
+
+    board1.piezas = piezaRotada;
+    board1.ingresoPieza();
+
+    int bloquesInsertados = 0;
+    for (int fila = 0; fila < tablero.length; fila++) {
+        for (int col = 0; col < tablero[fila].length; col++) {
+            if (tablero[fila][col] == 1) {
+                bloquesInsertados++;
+            }
+        }
+    }
+ 
+    
+    assertEquals(4, bloquesInsertados);
+
+
+
+
+
 }
 
 
