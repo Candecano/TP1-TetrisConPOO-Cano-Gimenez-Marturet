@@ -29,9 +29,7 @@ class TetrisTest {
      PieceBase piezanueva = new PieceBase();
 
     int[][] piezaSeleccionada = piezanueva.PiezaAleatoria(piezanueva.PiezaRandom);
-    board1.piezas = piezaSeleccionada;
-    board1.ingresoPieza();
-
+  
     //se crea el reloj
     Clock c1 = new Clock();
 
@@ -110,13 +108,17 @@ class TetrisTest {
   PieceStick pist = new PieceStick(piezas);
 
  
-
+//se colocan los sticks uno al lado del otro 
   board1.piezas= pist.piezas;
   for(int col=0; col <tablero[0].length; col++){
       board1.colocarPieza();
   }
-   Clock c1 = new Clock();
+  
 
+   Clock c1 = new Clock();
+//bajan las piezas a las ultimas filas del tablero
+//se mira el alto de las piezas y lo que queda de espacio en el tablero
+//fila inicial= donde comienza la pieza
   while (board1.filaInicial + board1.piezas.length < tablero.length) {
       c1.Tick();  // Avanza el tick
       board1.bajarFILA();  // Baja la pieza
@@ -126,7 +128,7 @@ class TetrisTest {
     assertEquals(0, board1.getTablero(4, col));
     assertEquals(0, board1.getTablero(5, col));
 }
-
+//se cuentan las filas que tengan 1 (osea que estan completas con piezas)
   int lineCount = board1.lineCount();
   assertEquals(4, lineCount);
 

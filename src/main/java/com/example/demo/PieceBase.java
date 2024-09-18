@@ -2,7 +2,7 @@ package com.example.demo;
 import java.util.*;
 
 public class PieceBase implements IRotable {
-   
+   //implementa Irotable para "heredarle" a las piezas
     public int[][] piezas;
     Random random = new Random();
     int PiezaRandom = random.nextInt(7);

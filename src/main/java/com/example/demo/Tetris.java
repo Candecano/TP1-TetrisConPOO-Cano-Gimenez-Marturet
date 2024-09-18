@@ -12,6 +12,7 @@ public class Tetris extends Board {
 
   
     public boolean getPierde() {
+        // se llama al metodo linecount de board para saber cuantas lineas con 1 hay
         obtenerlineasconUNO(); 
         return lineCount == 10; 
     }
@@ -20,7 +21,7 @@ public class Tetris extends Board {
         obtenerlineasconUNO(); 
         return lineCount == 4; 
     }
-
+//se "capta" el valor del metodo linecount
     public void obtenerlineasconUNO() {
         this.lineCount = lineCount();  
     }

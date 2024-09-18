@@ -1,6 +1,8 @@
 package com.example.demo;
 
-public class Board extends PieceBase{
+public class Board extends PieceBase {
+    //heredamos la clase PieceBase porque para Board necesitabamos la piezas que las definimos en PieceBase
+    //y en esta clase nos centramos principalmente en el tablero
 
     public int [][]	 tablero;
     public int ingresoPieza; 
@@ -31,7 +33,7 @@ public class Board extends PieceBase{
         columnasDisponibles = tablero[0].length - this.piezas[0].length;
     
         // Columna del tablero en donde irá la pieza teniendo en cuenta las restricciones de la resta
-         columnaInicial = (int) (Math.random() * (columnasDisponibles + 1));
+         columnaInicial = (int) (Math.random() * (columnasDisponibles + 1));// mas uno por que sin eso no llega a ser un valor entero
     
 
         for (int fila = 0; fila < this.piezas.length; fila++) {
@@ -52,7 +54,7 @@ public class Board extends PieceBase{
         for (int col = 0; col < tablero[0].length; col++) {
             boolean columnaVacia = true;
             
-         
+            //verifica si en el tablero hay suficiente espacio para colocar la siguiente pieza inmediatamente al lado
             for (int fila = 0; fila < tablero.length; fila++) {
                 if (tablero[fila][col] != 0) {
                     columnaVacia = false;
@@ -60,6 +62,7 @@ public class Board extends PieceBase{
                 }
             }
             
+            //es para saber cuanto espacio libre existe en el tablero
             if (columnaVacia) {
                 espacioLibre++;
             } else {
@@ -72,6 +75,7 @@ public class Board extends PieceBase{
             }
         }
         
+        //se coloca la pieza
         for (int fila = 0; fila < this.piezas.length; fila++) {
             for (int col = 0; col < this.piezas[0].length; col++) {
                 if (this.piezas[fila][col] != 0) {
@@ -89,10 +93,16 @@ public class Board extends PieceBase{
             
 }
 
-public void bajarFILA() {
+public void bajarFILA(){
+    //verfica las filas de abajo hacia arriba 
+    //"fila" indica la posicion que se enceuntra abajo de la primera fila ocupada por la pieza en el tablero y 
+    //el buqlue detendrá hasta llagar la todas las filas
+    //el fila-- hace que se pueda rocorrer la pieza de abajo hacia arriba
     for (int fila = filaInicial + this.piezas.length - 1; fila >= filaInicial; fila--) {
+        //asegura de que no podamos mover las filas fuera del tablero
         if (fila + 1 < tablero.length) { 
             for (int col = 0; col < tablero[0].length; col++) {
+                //mueve la fila hacia abajo
                 tablero[fila + 1][col] = tablero[fila][col]; 
                 tablero[fila][col] = 0; 
             }
@@ -117,11 +127,10 @@ public void bajarFILA() {
     }
 }
 
-
 public void eliminarFila() {
-    
     for (int fila = 0; fila < this.tablero.length; fila++) {
         for (int col = 0; col < this.tablero[0].length; col++) {
+            //elimina todo los 1 y los intercambia por 0
             if (this.tablero[fila][col] == 1) {
                 tablero[fila][col] = 0;
             }
@@ -129,14 +138,11 @@ public void eliminarFila() {
     }
 }
 
-            
-        
-    
 //bajar pieza
-
 public void bajarPieza() {
-
-    if (filaInicial + piezas.length < tablero.length) {
+    //limpia la fila donde se encuentra la pieza
+    //indica que la pieza no exceda las filas del tablero
+       if (filaInicial + piezas.length < tablero.length) {
         // Usamos un solo bucle para eliminar la pieza anterior y moverla hacia abajo
         for (int fila = 0; fila < this.piezas.length; fila++) {
             for (int col = 0; col < this.piezas[0].length; col++) {
@@ -148,6 +154,7 @@ public void bajarPieza() {
                 }
             }
         }
+        //al limpiar la posicion anterior se baja a la fila inferior para colocar la pieza
         filaInicial++;  // Mover la pieza hacia abajo
         
         //Colocamos la pieza en la posicion siguiente
