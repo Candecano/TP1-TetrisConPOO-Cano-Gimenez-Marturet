@@ -505,9 +505,7 @@ void se_ingresa_una_pieza_aleatoria_en_tablero(){
     Board  board1 = new Board (tablero);
 
     PieceBase piezanueva = new PieceBase();
-//se selecciona de forma aleatoria la pieza
-//metodo PiezaAleatoria, que recibe como parametro PiezaRandom(numero random de 0 a 7)
-//entonces se elige una pieza dentro de los diferentes numeros que da PiezaRandom
+
     int[][] piezaSeleccionada = piezanueva.PiezaAleatoria(piezanueva.PiezaRandom);
     board1.piezas = piezaSeleccionada;
     board1.ingresoPieza();
@@ -832,6 +830,7 @@ void se_baja_toda_una_linea(){
     for (int col = 0; col < tablero[0].length; col++) {
         assertEquals(1, board1.getTablero(9, col));
     }
+    
 }
 
 @Test 

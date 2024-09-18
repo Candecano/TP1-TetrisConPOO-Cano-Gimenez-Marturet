@@ -94,17 +94,12 @@ public class Board extends PieceBase {
 }
 
 public void bajarFILA(){
-    //verfica las filas de abajo hacia arriba 
-    //"fila" indica la posicion que se enceuntra abajo de la primera fila ocupada por la pieza en el tablero y 
-    //el buqlue detendrá hasta llagar la todas las filas
-    //el fila-- hace que se pueda rocorrer la pieza de abajo hacia arriba
-    for (int fila = filaInicial + this.piezas.length - 1; fila >= filaInicial; fila--) {
-        //asegura de que no podamos mover las filas fuera del tablero
-        if (fila + 1 < tablero.length) { 
+   
+    for (int fila = filaInicial; fila < filaInicial + piezas.length; fila++) {
+        if (fila + 1 < tablero.length) {  // verifica que no se salga del tablero
             for (int col = 0; col < tablero[0].length; col++) {
-                //mueve la fila hacia abajo
-                tablero[fila + 1][col] = tablero[fila][col]; 
-                tablero[fila][col] = 0; 
+                tablero[fila + 1][col] = tablero[fila][col];  // mueve la fila para abajo
+                tablero[fila][col] = 0;  //vaciar la fila actual
             }
         }
     }
@@ -118,10 +113,6 @@ public void bajarFILA(){
                 
                 tablero[filaInicial + fila][columnaInicial + col] = 0; // Deja el valor como cero
             }
-            
-
-
-
 
         }
     }
