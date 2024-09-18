@@ -5,6 +5,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class BoardTest {
+
 @Test
 void construccion_de_tablero(){
         int [][] tablero={
@@ -504,7 +505,9 @@ void se_ingresa_una_pieza_aleatoria_en_tablero(){
     Board  board1 = new Board (tablero);
 
     PieceBase piezanueva = new PieceBase();
-
+//se selecciona de forma aleatoria la pieza
+//metodo PiezaAleatoria, que recibe como parametro PiezaRandom(numero random de 0 a 7)
+//entonces se elige una pieza dentro de los diferentes numeros que da PiezaRandom
     int[][] piezaSeleccionada = piezanueva.PiezaAleatoria(piezanueva.PiezaRandom);
     board1.piezas = piezaSeleccionada;
     board1.ingresoPieza();
@@ -520,6 +523,7 @@ void comprueba_tic_x_segundo(){
     //se "llama" al metodo Tick que es igual a 1
     assertEquals(1, c1.getTick());
 }
+
 //sin clock
 @Test
 void se_ingresa_una_pieza_en_tablero_y_baja(){
@@ -661,11 +665,15 @@ void se_ingresa_una_perroizq_en_tablero_y_baja_por_segundo_y_gira(){
         board1.piezas= pidoglefT.piezas;
         board1.ingresoPieza();
         Clock c1 = new Clock();
-            //baja la pieza rotada una posicion hacia abajo
+        //baja la pieza rotada una posicion hacia abajo
         c1.Tick(); 
         if (c1.getTick() == 1) {
         board1.bajarPieza();
         }
+        for (int col = 0; col < tablero[0].length; col++) {
+            assertEquals(0, tablero[0][col]);
+        }
+
 }
 //no se pueden ingresar más piezas a la primera linea
 @Test
@@ -741,16 +749,11 @@ void si_se_llena_de_1_la_primera_fila_desaparece(){
     board1.colocarPieza();
     board1.colocarPieza();
 
-   
-
-   
     board1.eliminarFila();
     //fila 0 se recorre para asegurarse de que esté vacia
     for (int col = 0; col < tablero[0].length; col++) {
         assertEquals(0, board1.getTablero(0, col));
     }
-
-    
 }
 
 @Test
@@ -791,7 +794,6 @@ void se_llena_2_lineas(){
 
 @Test
 void se_baja_toda_una_linea(){
-
     int [][] tablero={
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -806,14 +808,17 @@ void se_baja_toda_una_linea(){
     };
     Board  board1 = new Board (tablero);
 
-    int[][] piezas = {    
-        {1, 1} ,
-        {1, 1} 
-    };
+    int[][] piezas = {
+        {1},  
+        {1},
+        {1},
+        {1}
+   };
+   PieceStick pist = new PieceStick(piezas);
+   
+    pist.rotarder();
 
-    PieceSquare pSquare = new PieceSquare(piezas);
-
-    board1.piezas= pSquare.piezas;
+    board1.piezas= pist.piezas;
     for(int col=0; col <tablero.length; col++){
         board1.colocarPieza();
     }
@@ -821,11 +826,10 @@ void se_baja_toda_una_linea(){
 
     while (board1.filaInicial + board1.piezas.length < tablero.length) {
         c1.Tick();  // Avanza el tick
-        board1.bajarFILA();  // Baja la pieza
+        board1.bajarFILA();  // Baja la fila
     }
 
     for (int col = 0; col < tablero[0].length; col++) {
-        assertEquals(1, board1.getTablero(8, col));
         assertEquals(1, board1.getTablero(9, col));
     }
 }
@@ -853,7 +857,22 @@ void ingresa_pieza_aleatoria_con_rot_aleatoria(){
 
     board1.piezas = piezaRotada;
     board1.ingresoPieza();
+
+ int bloquesInsertados = 0;
+    for (int fila = 0; fila < tablero.length; fila++) {
+        //se pone tablero[fila] para saber el ancho
+        for (int col = 0; col < tablero[fila].length; col++) {
+            if (tablero[fila][col] == 1) {
+                bloquesInsertados++;
+            }
+
+       
+        }
 }
+    assertEquals(4, bloquesInsertados);
+
+}
+
 //para mejorar cobertura
 @Test
 void se_prueba_case0_rotacion_pieza_aleatoria_izq(){
@@ -892,16 +911,11 @@ void se_prueba_case0_rotacion_pieza_aleatoria_izq(){
     }
     }
 
-
     assertEquals(4, bloquesInsertados);
-
-
-
 
 }
 
 @Test
-
 void se_prueba_case1_rotacion_pieza_aleatoria_(){
     int [][] tablero={
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},

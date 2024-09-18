@@ -83,7 +83,6 @@ class TetrisTest {
 
   @Test
   void se_gana_el_juego() {
-
    
     int [][] tablero={
       {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
